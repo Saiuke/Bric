@@ -9,6 +9,6 @@ class Review extends Model
    protected $fillable = [
       'stars',
       'title',
-      'review'
+      'description'
     ];
 }

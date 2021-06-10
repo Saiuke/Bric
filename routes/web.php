@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ReviewController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NotificationMail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +16,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('reviews.create');
 });
 
 Route::resource('reviews', 'ReviewController');
+Route::get('/send-mail', function () {
+   Mail::to('ezequias@hotmail.com.br')->send(new NotificationMail("A review was updated.")); 
+});

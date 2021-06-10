@@ -8,7 +8,7 @@
 </style>
 <div class="card uper">
    <div class="card-header">
-      Submit your review
+      Edit Share
    </div>
    <div class="card-body">
       @if ($errors->any())
@@ -20,21 +20,22 @@
          </ul>
       </div><br />
       @endif
-      <form method="post" action="{{ route('reviews.store') }}">
+      <form method="post" action="{{ route('reviews.update', $review->id) }}">
+         @method('PATCH')
+         @csrf
          <div class="form-group">
-            @csrf
             <label for="title">Title:</label>
-            <input type="text" class="form-control" name="title" require/>
+            <input type="text" class="form-control" name="title" value="{{ $review->title }}" />
          </div>
          <div class="form-group">
-            <label for="stars">How many stars:</label>
-            <input type="number" min="0" max="5" class="form-control" name="stars" require />
+            <label for="stars">Stars:</label>
+            <input type="text" class="form-control" name="stars" value="{{ $review->stars }}" />
          </div>
          <div class="form-group">
-            <label for="description">Your review:</label>
-            <input type="text" class="form-control" name="description" require/>
+            <label for="description">Review:</label>
+            <input type="text" class="form-control" name="description" value="{{ $review->description }}" />
          </div>
-         <button type="submit" class="btn btn-primary">Submit</button>
+         <button type="submit" class="btn btn-primary">Update</button>
       </form>
    </div>
 </div>

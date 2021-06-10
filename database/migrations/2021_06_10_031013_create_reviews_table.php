@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->integer('stars')->default(0)->comment('Number of stars');
             $table->string('title')->charset('utf8mb4')->comment('Title of the review');
-            $table->string('review')->charset('utf8mb4')->comment('Body of the review');
+            $table->text('description')->charset('utf8mb4')->comment('Body of the review');
             $table->timestamps();
         });
     }
